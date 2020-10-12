@@ -1,0 +1,31 @@
+.card {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.card:hover,
+.card:active {
+    filter: grayscale(1);
+}
+
+.card__image {
+    width: 250px;
+    height: 130px;
+
+    .number-episode {
+        padding: 5px;
+        background-color: white;
+        width: 15%;
+        font-family: HelveticaNeueBd, Helvetica, sans-serif;
+    }
+}
+
+.card__content {
+    padding: 20px 0;
+    text-align:left;
+    color: white;
+}

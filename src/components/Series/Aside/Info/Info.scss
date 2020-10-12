@@ -1,0 +1,23 @@
+.info {
+    height: 100%;
+}
+
+.info__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    font-size: 15px;
+    padding: 50px 40px;
+    border-bottom: 1px solid lightgray;
+}
+
+.info__content {
+    padding: 50px 40px;
+    text-align: left;
+    align-content: center;
+    h2 {
+        font-family: HelveticaNeueRoman;
+        margin-bottom: 15px;
+    }
+}

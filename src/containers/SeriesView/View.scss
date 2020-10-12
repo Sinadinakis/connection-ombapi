@@ -1,0 +1,61 @@
+// Load fonts
+@font-face {
+    font-family: HelveticaNeueRoman;
+    src: url("../../assets/fonts/HelveticaNeueLTStd-Roman.otf") format("opentype");
+}
+
+
+@font-face {
+    font-family: HelveticaNeueBd;
+    src: url("../../assets/fonts/HelveticaNeueLTStd-Bd.otf") format("opentype");
+}
+
+@font-face {
+    font-family: HelveticaNeueMd;
+    src: url("../../assets/fonts/HelveticaNeueLTStd-Md.otf") format("opentype");
+}
+
+
+@font-face {
+    font-family: HelveticaNeue;
+    src: url("../../assets/fonts/HelveticaNeueLTStd-Lt.otf") format("opentype");
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    flex-direction: row;
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
+}
+
+.content-main {
+    flex: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    background-color: grey;
+    padding: 20px 50px;
+    overflow-x: hidden;
+    @media (max-width: 800px) {
+        flex: 100%;
+        padding: 100px 20px;
+        overflow-x: visible;
+    }
+}
+
+
+.content-aside {
+    flex: 30%;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 800px) {
+        flex: 100%;
+    }
+}
