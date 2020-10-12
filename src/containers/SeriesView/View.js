@@ -37,7 +37,7 @@ const View = () => {
     fetchData();
   }, []);
 
-  const postSelectedHandler = (id) =>setPostId(id);
+  const postSelectedHandler = (id) =>  setPostId(id);
 
   return (
     <main className="container">

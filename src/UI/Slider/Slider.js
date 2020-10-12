@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 
 // Images
@@ -7,6 +7,7 @@ import { posters } from "../../components/Series/Aside/Poster/Poster";
 // SCSS
 import "./Slider.scss";
 
+
 /**
  * @param id - id of episode
  * @param title - title of episode
@@ -14,11 +15,19 @@ import "./Slider.scss";
  * @param error - boolean to show some error msg  
  */
 const Slider = ({ id, title, onClick, error }) => {
+  const cardRef = useRef(null)
+
+  const executeScroll = () => cardRef.current.scrollIntoView();
+
   if (!error) {
     return (
-      <article className="card" onClick={onClick}>
+      <article className="card" onClick={() => { 
+        onClick();
+        executeScroll();
+     }}>
         <div
           className="card__image"
+          ref={cardRef}
           style={{
             background: `url(${posters[id]}) no-repeat center top`,
             backgroundSize: "cover",
