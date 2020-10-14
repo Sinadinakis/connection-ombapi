@@ -9,8 +9,8 @@ import Image from "../../../UI/Image";
 import "./MainContent.scss";
 
 // Images
-import arrowLeft from "../../../assets/icons/left-arrow.png";
-import arrowRight from "../../../assets/icons/right-arrow.png";
+import arrowLeft from "../../../assets/icons/left-arrow.svg";
+import arrowRight from "../../../assets/icons/right-arrow.svg";
 
 const scrollOffset = 400;
 
@@ -43,21 +43,21 @@ const MainContent = ({ data, error, postSelectedHandler }) => {
   return (
     <>
       <div className="header">
-        <p>Season {data.Season}</p>
-        <h1>{data.Title}</h1>
+        <div className="header__season">Season {data.Season}</div>
+        <h1 className="header__title">{data.Title}</h1>
       </div>
       <div className="content">
-        <div className="content__images" ref={inputSlider}>
+        <div className="content__slider" ref={inputSlider}>
           {sliderEpisodes}
         </div>
-        <div className="content__buttons">
+        <div className="content__slider-buttons">
           <button id="prev" onClick={perviousButtonHandler}>
-            <Image url={arrowLeft} styles={{ width: "30px", height: "30px" }} />
+            <Image url={arrowLeft} styles={{ width: "28px", height: "18px" }} />
           </button>
           <button id="next" onClick={nextButtonHandler}>
             <Image
               url={arrowRight}
-              styles={{ width: "30px", height: "30px" }}
+              styles={{ width: "28px", height: "18px" }}
             />
           </button>
         </div>

@@ -7,24 +7,26 @@ import { posters } from "../../components/Series/Aside/Poster/Poster";
 // SCSS
 import "./Slider.scss";
 
-
 /**
  * @param id - id of episode
  * @param title - title of episode
  * @param onClick - function check we click an episode in the slider
- * @param error - boolean to show some error msg  
+ * @param error - boolean to show some error msg
  */
 const Slider = ({ id, title, onClick, error }) => {
-  const cardRef = useRef(null)
+  const cardRef = useRef(null);
 
   const executeScroll = () => cardRef.current.scrollIntoView();
 
   if (!error) {
     return (
-      <article className="card" onClick={() => { 
-        onClick();
-        executeScroll();
-     }}>
+      <article
+        className="card"
+        onClick={() => {
+          onClick();
+          executeScroll();
+        }}
+      >
         <div
           className="card__image"
           ref={cardRef}
@@ -35,10 +37,7 @@ const Slider = ({ id, title, onClick, error }) => {
         >
           <div className="number-episode">{id}</div>
         </div>
-        <div className="card__content">
-          <h1>{title}</h1>
-          <p>{}</p>
-        </div>
+        <div className="card__content">{title}</div>
       </article>
     );
   }

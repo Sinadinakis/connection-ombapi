@@ -1,36 +1,43 @@
 // BEM naming methodology
 .header {
-   font-family: HelveticaNeueMd;
-   font-size: 35px;
-   text-align: left;
-   color: white;
-   display: flex;
-   flex-direction: column;
-   margin-bottom: 200px;
-   
-   h1 {
-       margin: 0;
-   }
+    text-align: left;
+    color: white;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header__season {
+    font-family: HelveticaNeue, Helvetica, sans-serif;
+    font-size: 23px;
+    line-height: 31px;
+}
+
+.header__title {
+    line-height: 98px;
+    font-family: HelveticaNeueRoman,Helvetica, sans-serif;
 }
 
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    height: 40vh;
 }
 
-.content__images {
+.content__slider {
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
     scroll-behavior: smooth;
     scrollbar-width: none; /* Firefox 64 */
-    
+
     &::-webkit-scrollbar {
         display: none;
     }
 }
 
-.content__buttons {
+.content__slider-buttons {
     text-align: right;
+    margin-right: 25px;
 }

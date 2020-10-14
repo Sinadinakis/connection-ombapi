@@ -8,7 +8,7 @@ import "./Info.scss";
 import Image from "../../../../UI/Image";
 
 // Image
-import star from "../../../../assets/icons/star.png";
+import star from "../../../../assets/icons/star.svg";
 
 /**
  * @param id - id of episode
@@ -30,21 +30,23 @@ const Info = ({ id, title }) => {
     }
   }, [id]);
 
-  // If there is an episode return this
+  // Check if there is an id
   if (id) {
     return (
       <div className="info">
         <div className="info__title">
-          <h1>
+          <div className="header">
             Episode {id} - {post.Released}
-          </h1>
-          <div styles={{ display: "flex" }}>
+          </div>
+          <div className="rating">
             <Image
               url={star}
               title="rating-imdb"
-              styles={{ width: "20px", height: "20px", marginRight: "10px" }}
+              styles={{ width: "30px", height: "30px", marginRight: "10px" }}
             />
-            {post.Ratings && post.Ratings[0]?.Value}
+            <span>
+              <b>{post.Ratings && post.imdbRating}</b> / 10
+            </span>
           </div>
         </div>
         <div className="info__content">

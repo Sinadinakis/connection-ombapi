@@ -2,22 +2,46 @@
     height: 100%;
 }
 
-.info__title {
+.info__title, 
+.info__content {
     display: flex;
-    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.info__title {
+    flex-direction: row;
     align-items: center;
-    align-content: center;
-    font-size: 15px;
-    padding: 50px 40px;
+    justify-content: space-between;
     border-bottom: 1px solid lightgray;
+    height: 13vh;
+
+    .header {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 1px;
+        font-family: HelveticaNeue, Helvetica, sans-serif;
+        color: black;
+    }
+
+    .rating {
+        display: flex;
+        align-items: center;
+    }
 }
 
 .info__content {
-    padding: 50px 40px;
     text-align: left;
-    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 26vh;
     h2 {
-        font-family: HelveticaNeueRoman;
+        font-family: HelveticaNeueBd, Helvetica, sans-serif;
+        font-size: 27px;
+        line-height: 36px;
         margin-bottom: 15px;
+    }
+    p {
+        font-size: 19px;
+        line-height: 25px;
     }
 }

@@ -1,10 +1,11 @@
 .card {
+    font-family: HelveticaNeue, Helvetica, sans-serif;
     display: flex;
-    text-align: center;
     flex-direction: column;
     box-sizing: border-box;
     cursor: pointer;
-    margin-right: 30px;
+    margin-right: 35px;
+    text-align:left;
 }
 
 .card:hover,
@@ -13,19 +14,23 @@
 }
 
 .card__image {
-    width: 250px;
+    width: 200px;
     height: 130px;
 
     .number-episode {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
         padding: 5px;
+        vertical-align: center;
         background-color: white;
-        width: 15%;
         font-family: HelveticaNeueBd, Helvetica, sans-serif;
     }
 }
 
 .card__content {
     padding: 20px 0;
-    text-align:left;
     color: white;
+    font-family: HelveticaNeue, Helvetica, sans-serif;
+    font-size: 15px;
 }
