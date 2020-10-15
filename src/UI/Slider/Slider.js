@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
-
+import { Link } from 'react-router-dom';
 // Images
 import { posters } from "../../components/Series/Aside/Poster/Poster";
 
@@ -27,17 +27,17 @@ const Slider = ({ id, title, onClick, error }) => {
           executeScroll();
         }}
       >
-        <div
-          className="card__image"
-          ref={cardRef}
-          style={{
-            background: `url(${posters[id]}) no-repeat center top`,
-            backgroundSize: "cover",
-          }}
-        >
-          <div className="number-episode">{id}</div>
-        </div>
-        <div className="card__content">{title}</div>
+          <div
+              className="card__image"
+              ref={cardRef}
+              style={{
+                background: `url(${posters[id]}) no-repeat center top`,
+                backgroundSize: "cover",
+              }}
+            >
+            <div className="number-episode">{id}</div>
+          </div>
+          <div className="card__content">{title}</div>
       </article>
     );
   }

@@ -24,17 +24,20 @@ const backgroundImage = {
   height: "100%",
 };
 
-const View = ({ history }) => {
+const View = ({ match, history }) => {
   const [data, setData] = useState({});
   const [error, setError] = useState(false);
   const [postId, setPostId] = useState(null);
   const [episodes, setEpisodes] = useState([]);
+  
+  let dataCache = localStorage.getItem('getData')
 
   useEffect(() => {
     const fetchData = async () => {
-      axios
+      await axios
         .get(`?apikey=${apiKey}&i=${serieKey}&season=1`)
         .then((res) => {
+          localStorage.setItem('getData', res.data.Episodes)
           setData(res.data);
           setEpisodes(res.data.Episodes);
         })
@@ -64,7 +67,7 @@ const View = ({ history }) => {
             postSelectedHandler={postSelectedHandler}
           />
         </section>
-        <Aside id={postId} title={episodes[postId]?.Title} />
+        <Aside id={postId} title={episodes[match.params?.id ?? postId]?.Title} />
       </main>
     </>
   );

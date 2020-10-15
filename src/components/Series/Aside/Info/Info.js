@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import moment from 'moment';
 
@@ -16,18 +16,27 @@ import star from "../../../../assets/icons/star.svg";
  * @param title - title of episode
  */
 const Info = ({ id, title }) => {
-  const [post, setPost] = useState([]);
+  const [episode, setEpisode] = useState({});
+  const cache = useRef({});
+  const url = `/?apikey=22f2250&i=tt7366338&season=1&episode=${id}`;
 
   useEffect(() => {
     if (id) {
-      const fetchPost = async () => {
-        axios
-          .get(`/?apikey=22f2250&i=tt7366338&season=1&episode=${id}`)
-          .then((res) => {
-            setPost(res.data);
-          });
+      const fetchEpisode = async () => {
+          // Use cache to avoid fetching the same api more than ones
+          if (cache.current[url]) {
+            const data = cache.current[url];
+            setEpisode(data);
+        } else {
+          await axios
+            .get(url)
+            .then((res) => {
+              setEpisode(res.data);
+              cache.current[url] = { ...res.data, title, id };
+            });
+        }
       };
-      fetchPost();
+      fetchEpisode();
     }
   }, [id]);
 
@@ -36,19 +45,19 @@ const Info = ({ id, title }) => {
     return (
       <div className="info">
         <div className="info__title">
-          <div className="info__title-header">Episode {id} - {moment(post.Released).format("YYYY-MM-DD")}</div>
+          <div className="info__title-header">Episode {id} - {moment(episode.Released).format("YYYY-MM-DD")}</div>
           <div className="info__title-rating">
             <Image
               url={star}
               title="rating-imdb"
               styles={{ width: "30px", height: "30px", marginRight: "17px"  }}
             />
-            <span><b>{post.Ratings && post.imdbRating}</b>/10</span>
+            <span><b>{episode.Ratings && episode.imdbRating}</b>/10</span>
           </div>
         </div>
         <div className="info__content">
-          <h2>{title}</h2>
-          <p>{post.Plot}</p>
+          <h2>{title ?? 'Sadly - There is no title'}</h2>
+          <p>{episode.Plot}</p>
         </div>
       </div>
     );
