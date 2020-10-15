@@ -41,9 +41,9 @@ const Info = ({ id, title }) => {
             <Image
               url={star}
               title="rating-imdb"
-              styles={{ width: "30px", height: "30px", marginRight: "10px"  }}
+              styles={{ width: "30px", height: "30px", marginRight: "17px"  }}
             />
-            <span><b>{post.Ratings && post.imdbRating}</b> / 10</span>
+            <span><b>{post.Ratings && post.imdbRating}</b>/10</span>
           </div>
         </div>
         <div className="info__content">
