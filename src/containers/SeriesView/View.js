@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import { withRouter } from 'react-router';
+
 
 // Components
 import MainContent from "../../components/Series/MainContent/MainContent";
-import Poster from "../../components/Series/Aside/Poster/Poster";
-import Info from "../../components/Series/Aside/Info/Info";
+import Aside from "../../components/Series/Aside/Aside";
 
 // SCSS
 import "./View.scss";
@@ -23,7 +24,7 @@ const backgroundImage = {
   height: "100%",
 };
 
-const View = () => {
+const View = ({ history }) => {
   const [data, setData] = useState({});
   const [error, setError] = useState(false);
   const [postId, setPostId] = useState(null);
@@ -44,7 +45,10 @@ const View = () => {
     fetchData();
   }, []);
 
-  const postSelectedHandler = (id) => setPostId(id);
+  const postSelectedHandler = (id) => { 
+    history.push(`/episode/${id}`)
+    setPostId(id);
+  }
 
   return (
     <>
@@ -60,13 +64,10 @@ const View = () => {
             postSelectedHandler={postSelectedHandler}
           />
         </section>
-        <aside className="container__aside">
-          <Poster id={postId} title={episodes[postId]?.Title} />
-          <Info id={postId} title={episodes[postId]?.Title} />
-        </aside>
+        <Aside id={postId} title={episodes[postId]?.Title} />
       </main>
     </>
   );
 };
 
-export default View;
+export default withRouter(View);
