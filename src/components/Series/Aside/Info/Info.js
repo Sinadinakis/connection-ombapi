@@ -35,18 +35,14 @@ const Info = ({ id, title }) => {
     return (
       <div className="info">
         <div className="info__title">
-          <div className="header">
-            Episode {id} - {post.Released}
-          </div>
-          <div className="rating">
+          <div className="info__title-header">Episode {id} - {post.Released}</div>
+          <div className="info__title-rating">
             <Image
               url={star}
               title="rating-imdb"
-              styles={{ width: "30px", height: "30px", marginRight: "10px" }}
+              styles={{ width: "30px", height: "30px", marginRight: "10px"  }}
             />
-            <span>
-              <b>{post.Ratings && post.imdbRating}</b> / 10
-            </span>
+            <span><b>{post.Ratings && post.imdbRating}</b> / 10</span>
           </div>
         </div>
         <div className="info__content">

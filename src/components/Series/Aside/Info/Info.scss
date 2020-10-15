@@ -2,7 +2,7 @@
     height: 100%;
 }
 
-.info__title, 
+.info__title,
 .info__content {
     display: flex;
     padding: 0 40px;
@@ -14,19 +14,17 @@
     justify-content: space-between;
     border-bottom: 1px solid lightgray;
     height: 13vh;
+}
+.info__title-header {
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-family: HelveticaNeue, Helvetica, sans-serif;
+    color: black;
+}
 
-    .header {
-        font-size: 18px;
-        line-height: 24px;
-        letter-spacing: 1px;
-        font-family: HelveticaNeue, Helvetica, sans-serif;
-        color: black;
-    }
-
-    .rating {
-        display: flex;
-        align-items: center;
-    }
+.info__title-rating {
+    display: flex;
+    align-items: center;
 }
 
 .info__content {
@@ -42,6 +40,6 @@
     p {
         font-size: 19px;
         line-height: 22px;
-        font-family:  HelveticaNeue;
+        font-family: HelveticaNeue;
     }
 }
