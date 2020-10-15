@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import { withRouter } from 'react-router';
-
+import { withRouter } from "react-router";
 
 // Components
 import MainContent from "../../components/Series/MainContent/MainContent";
@@ -29,7 +28,7 @@ const View = ({ match, history }) => {
   const [error, setError] = useState(false);
   const [postId, setPostId] = useState(null);
   const [episodes, setEpisodes] = useState([]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       await axios
@@ -45,10 +44,10 @@ const View = ({ match, history }) => {
     fetchData();
   }, []);
 
-  const postSelectedHandler = (id) => { 
-    history.push(`/episode/${id}`)
+  const postSelectedHandler = (id) => {
+    history.push(`/episode/${id}`);
     setPostId(id);
-  }
+  };
 
   return (
     <>
@@ -64,7 +63,10 @@ const View = ({ match, history }) => {
             postSelectedHandler={postSelectedHandler}
           />
         </section>
-        <Aside id={postId} title={episodes[match.params?.id ?? postId]?.Title} />
+        <Aside
+          id={postId}
+          title={episodes[match.params?.id ?? postId]?.Title}
+        />
       </main>
     </>
   );

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import moment from 'moment';
 
 // CSS
 import "./Info.scss";
@@ -20,20 +19,26 @@ const Info = ({ id, title }) => {
   const cache = useRef({});
   const url = `/?apikey=22f2250&i=tt7366338&season=1&episode=${id}`;
 
+  const fomrtaDate = (date) => {
+    let day = date.getDate();
+    let month = date.getMonth() + 1; //Month from 0 to 11
+    let year = date.getFullYear();
+    return `${year}-${month<=9 ? '0' + month : month}-${day <= 9 ? '0' + day : day}`;
+  }
+
+
   useEffect(() => {
     if (id) {
       const fetchEpisode = async () => {
-          // Use cache to avoid fetching the same api more than ones
-          if (cache.current[url]) {
-            const data = cache.current[url];
-            setEpisode(data);
+        // Use cache to avoid fetching the same api more than ones
+        if (cache.current[url]) {
+          const data = cache.current[url];
+          setEpisode(data);
         } else {
-          await axios
-            .get(url)
-            .then((res) => {
-              setEpisode(res.data);
-              cache.current[url] = { ...res.data, title, id };
-            });
+          await axios.get(url).then((res) => {
+            setEpisode(res.data);
+            cache.current[url] = { ...res.data, title, id };
+          });
         }
       };
       fetchEpisode();
@@ -45,18 +50,22 @@ const Info = ({ id, title }) => {
     return (
       <div className="info">
         <div className="info__title">
-          <div className="info__title-header">Episode {id} - {moment(episode.Released).format("YYYY-MM-DD")}</div>
+          <div className="info__title-header">
+            Episode {id} - {fomrtaDate(new Date(episode.Released))}
+          </div>
           <div className="info__title-rating">
             <Image
               url={star}
               title="rating-imdb"
-              styles={{ width: "30px", height: "30px", marginRight: "17px"  }}
+              styles={{ width: "30px", height: "30px", marginRight: "17px" }}
             />
-            <span><b>{episode.Ratings && episode.imdbRating}</b>/10</span>
+            <span>
+              <b>{episode.Ratings && episode.imdbRating}</b>/10
+            </span>
           </div>
         </div>
         <div className="info__content">
-          <h2>{title ?? 'Sadly - There is no title'}</h2>
+          <h2>{title ?? "Sadly - There is no title"}</h2>
           <p>{episode.Plot}</p>
         </div>
       </div>
