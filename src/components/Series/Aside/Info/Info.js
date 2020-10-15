@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import moment from 'moment';
 
 // CSS
 import "./Info.scss";
@@ -35,7 +36,7 @@ const Info = ({ id, title }) => {
     return (
       <div className="info">
         <div className="info__title">
-          <div className="info__title-header">Episode {id} - {post.Released}</div>
+          <div className="info__title-header">Episode {id} - {moment(post.Released).format("YYYY-MM-DD")}</div>
           <div className="info__title-rating">
             <Image
               url={star}
